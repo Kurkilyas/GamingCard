@@ -20,12 +20,12 @@ function App() {
 
   // Temel kart tanımları
   const defaultCards = [
-    { path: '/pictures/apple.jpg', matched: false },
-    { path: '/pictures/banana.jpg', matched: false },
-    { path: '/pictures/cherry.jpg', matched: false },
-    { path: '/pictures/orange.jpg', matched: false },
-    { path: '/pictures/strawberry.jpg', matched: false },
-    { path: '/pictures/watermelon.jpg', matched: false },
+    { path: '/pictures/image1.jpg', matched: false },
+    { path: '/pictures/image2.jpg', matched: false },
+    { path: '/pictures/image3.jpg', matched: false },
+    { path: '/pictures/image4.jpg', matched: false },
+    { path: '/pictures/image5.jpg', matched: false },
+    { path: '/pictures/image6.jpg', matched: false },
   ];
 
   const [cards, setCards] = useState([]);
@@ -86,7 +86,7 @@ useEffect(()=>{
   {
     play();
   }
-  
+
 
 },[musicState])
   // Seçim ve disable durumunu sıfırlama
