@@ -1,0 +1,26 @@
+@import "tailwindcss";
+body{
+  background: #222831;
+  color: #fff;
+}
+.card{
+  position: relative;
+}
+.card .back{
+  transform: rotateY(0deg);
+  transition: 300ms all ease-in;
+}
+.card .front{
+  position: absolute;
+  transform: rotateY(90deg);
+  transition: 300ms all ease-in; 
+ 
+}
+.rotated .front{
+  transform: rotateY(0deg);
+ 
+}
+.rotated .back{
+  transform: rotateY(90deg);
+ 
+}
