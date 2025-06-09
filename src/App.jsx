@@ -106,7 +106,7 @@ useEffect(()=>{
 
   return (
     <section className='flex flex-col items-center justify-center gap-10 mt-10'>
-      <h1 className='text-3xl font-semibold text-center'>Tectra NFT Card Game</h1>
+      <h1 className='text-3xl font-semibold text-center'>P33L CARD GAME</h1>
       {/* Oyun başlatma butonu */}
       <button 
         className='bg-[#00ADB5] px-3 py-2 rounded hover:-translate-y-1.5 transition-all' 
