@@ -1,26 +1,154 @@
 @import "tailwindcss";
-body{
+
+body {
   background: #222831;
   color: #fff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
-.card{
+
+/* 3D kart animasyonları için gerekli CSS özellikleri */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.card {
   position: relative;
+  transform-style: preserve-3d;
 }
-.card .back{
+
+.card .back {
   transform: rotateY(0deg);
-  transition: 300ms all ease-in;
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  backface-visibility: hidden;
 }
-.card .front{
+
+.card .front {
   position: absolute;
   transform: rotateY(90deg);
-  transition: 300ms all ease-in; 
- 
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  backface-visibility: hidden;
 }
-.rotated .front{
+
+.rotated .front {
   transform: rotateY(0deg);
- 
 }
-.rotated .back{
+
+.rotated .back {
   transform: rotateY(90deg);
- 
 }
+
+/* Eşleşen kartlar için özel animasyon */
+@keyframes matchSuccess {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.card.matched .front {
+  animation: matchSuccess 0.6s ease-in-out;
+}
+
+/* Hover efektleri için ek animasyonlar */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.card:hover {
+  animation: float 2s ease-in-out infinite;
+}
+
+/* Responsive tasarım için ek stiller */
+@media (max-width: 768px) {
+  .card {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    transform: scale(0.8);
+  }
+}
+
+/* Scrollbar stilleri */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Seçim animasyonu */
+@keyframes selectPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+.card.selected {
+  animation: selectPulse 1s infinite;
+}
+
+/* Kutlama animasyonu */
+@keyframes confetti {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+  animation: confetti 3s linear infinite;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.confetti:nth-child(1) { left: 10%; animation-delay: 0s; }
+.confetti:nth-child(2) { left: 20%; animation-delay: 0.5s; }
+.confetti:nth-child(3) { left: 30%; animation-delay: 1s; }
+.confetti:nth-child(4) { left: 40%; animation-delay: 1.5s; }
+.confetti:nth-child(5) { left: 50%; animation-delay: 2s; }
+.confetti:nth-child(6) { left: 60%; animation-delay: 0.3s; }
+.confetti:nth-child(7) { left: 70%; animation-delay: 0.8s; }
+.confetti:nth-child(8) { left: 80%; animation-delay: 1.3s; }
+.confetti:nth-child(9) { left: 90%; animation-delay: 1.8s; }
